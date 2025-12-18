@@ -1,0 +1,29 @@
+package com.leave;
+
+public class VacationLeaveRequest extends LeaveRequest {
+	private boolean planned;
+
+	
+	public VacationLeaveRequest(int requestId, Employee employee, String startDate, String endDate,String deliveryDate,boolean planned) {
+		super(requestId,employee,startDate,endDate,"Maternity Leave");
+		this.planned = planned;
+	}
+	
+	public String getDeliveryDate() {
+		return this.deliveryDate;
+	}
+	
+	public boolean isPlanned() {
+		return planned;
+	}
+	
+	@Override
+	public boolean processRequest() {
+	    if (!planned) {
+	        System.out.println("Maternity Date is not provided!");
+	        return false;
+	    }
+	    System.out.println("Processing maternity leave request...");
+	    return true;
+	}
+}

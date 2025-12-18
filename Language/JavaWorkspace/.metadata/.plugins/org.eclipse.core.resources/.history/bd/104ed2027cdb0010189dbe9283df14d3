@@ -1,0 +1,59 @@
+package com.leave;
+
+public class Employee {
+	private String empID;
+	private String name;
+	private String dept;
+	private double leaveBalance;
+	private double salary;
+	
+	public Employee(String empID, String name, String dept, double salary) {
+		this.empID = empID;
+		this.name = name;
+		this.dept = dept;
+		this.leaveBalance = 10.0;
+		this.salary = salary;
+	}
+	
+	public double getLeaveBalance() {
+	    return leaveBalance;
+	}
+
+	public void setLeaveBalance(double leaveBalance) {
+	    this.leaveBalance = leaveBalance;
+	}
+
+
+	public String getEmpID() {
+		return empID;
+	}
+
+	public void setEmpID(String empID) {
+		this.empID = empID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+}

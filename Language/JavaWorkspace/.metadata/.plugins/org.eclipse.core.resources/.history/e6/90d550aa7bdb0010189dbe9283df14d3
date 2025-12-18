@@ -1,0 +1,13 @@
+package com.leave;
+
+public class LeaveRequest {
+
+	protected int requestId;
+	protected Employee employee;
+	protected String startDate;
+	protected String endDate;
+	protected String status;
+
+	// Methods and constructors
+	// ...
+}

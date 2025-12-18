@@ -1,0 +1,24 @@
+package com.leave;
+
+public class MaternityLeaveRequest extends LeaveRequest{
+	private String deliveryDate;
+	
+	public MaternityLeaveRequest(int requestId, Employee employee, String startDate, String endDate,String deliveryDate) {
+		super(requestId,employee,startDate,endDate,"Maternity Leave");
+		this.deliveryDate = deliveryDate;
+	}
+	
+	public String getDeliveryDate() {
+		return this.deliveryDate;
+	}
+	
+	@Override
+	public boolean processRequest() {
+	    if (deliveryDate == "") {
+	        System.out.println("Maternity Date is not provided!");
+	        return false;
+	    }
+	    System.out.println("Processing sick leave request...");
+	    return true;
+	}
+}

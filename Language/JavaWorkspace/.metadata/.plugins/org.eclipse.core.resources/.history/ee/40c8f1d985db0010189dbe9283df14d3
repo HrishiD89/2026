@@ -1,0 +1,55 @@
+package com.leave;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+public class SickLeaveRequest extends LeaveRequest {
+	private boolean medicalCertificateProvided;
+
+	public SickLeaveRequest(int requestId, Employee employee, String startDate, String endDate,
+			boolean medicalCertificateProvided) {
+		super(requestId, employee, startDate, endDate, "Sick Leave");
+		this.medicalCertificateProvided = medicalCertificateProvided;
+	}
+
+	public boolean isMedicalCertificateProvided() {
+		return medicalCertificateProvided;
+	}
+	
+	
+	@Override
+	public boolean processRequest() {
+	    if (!medicalCertificateProvided && getDuration() > 2) {
+	        System.out.println("Sick leave longer than 2 days requires a medical certificate");
+	        return false;
+	    }
+	    System.out.println("Processing sick leave request...");
+	    return true;
+	}
+
+	private int getDuration() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+		LocalDate start = LocalDate.parse(startDate,formatter);
+		LocalDate end = LocalDate.parse(endDate,formatter);
+		return (int) ChronoUnit.DAYS.between(start, end);
+	}
+
+	@Override
+	public boolean approve(String approverName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deny(String approverName, String reason) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int calculateLeaveDays() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

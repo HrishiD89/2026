@@ -1,0 +1,10 @@
+package com.leave;
+
+public class MaternityLeaveRequest extends LeaveRequest{
+	private String deliveryDate;
+	
+	public MaternityLeaveRequest(int requestId, Employee employee, String startDate, String endDate,String deliveryDate) {
+		super(requestId,employee,startDate,endDate,"Maternity Leave");
+		this.deliveryDate = deliveryDate;
+	}
+}

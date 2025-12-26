@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;LeaveRequest&apos;" deleteContents="false" description="Delete resource &apos;LeaveRequest&apos;" element1="/LeaveRequest" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1765995366575"/>&#x0A;<refactoring comment="Delete resource &apos;flgsb-oop-additional-practice&apos;" deleteContents="false" description="Delete resource &apos;flgsb-oop-additional-practice&apos;" element1="/flgsb-oop-additional-practice" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1766080058534"/>
-</session>

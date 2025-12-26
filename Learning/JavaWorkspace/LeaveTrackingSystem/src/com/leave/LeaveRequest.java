@@ -1,0 +1,128 @@
+package com.leave;
+
+import java.util.ArrayList;
+import java.time.LocalDate;
+
+public abstract class LeaveRequest implements Approvable {
+	protected int requestId;
+	protected Employee employee;
+	protected String startDate;
+	protected String endDate;
+	protected String status;
+
+	public int getRequestId() {
+		return requestId;
+	}
+
+	public abstract int calculateLeaveDays();
+
+	public void setRequestId(int requestId) {
+		this.requestId = requestId;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public LeaveRequest(int requestId, Employee employee, String startDate, String endDate, String status) {
+		this.requestId = requestId;
+		this.employee = employee;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.status = status;
+	}
+
+	public boolean processRequest() {
+		// Basic request processing logic
+		System.out.println("Processing generic leave request...");
+		return true;
+	}
+
+	private ArrayList<StatusChange> statusHistory = new ArrayList<>();
+
+	public class StatusChange {
+		private String oldStatus;
+		private String newStatus;
+		private String changeDate;
+		private String changedBy;
+
+		public StatusChange(String oldStatus, String newStatus, String changeDate, String changedBy) {
+			this.oldStatus = oldStatus;
+			this.newStatus = newStatus;
+			this.changeDate = changeDate;
+			this.changedBy = changedBy;
+		}
+
+		public String getOldStatus() {
+			return oldStatus;
+		}
+
+		public String getNewStatus() {
+			return newStatus;
+		}
+
+		public String getChangeDate() {
+			return changeDate;
+		}
+
+		public String getChangedBy() {
+			return changedBy;
+		}
+        
+        @Override
+        public String toString() {
+            return "Date: " + changeDate + ", Changed By: " + changedBy + 
+                   ", Status: " + oldStatus + " -> " + newStatus;
+        }
+	}
+	
+	private String getCurrentDate() {
+		return LocalDate.now().toString();
+	}
+	
+	public void changeStatus(String newStatus, String changedBy) {
+        String oldStatus = this.status;
+        this.status = newStatus;
+        
+        // Create a new status change record
+        StatusChange change = new StatusChange(
+            oldStatus, newStatus, getCurrentDate(), changedBy);
+        statusHistory.add(change);
+    }
+    
+    public void displayStatusHistory() {
+        System.out.println("Status History for Request ID " + requestId + ":");
+        for (StatusChange change : statusHistory) {
+            System.out.println(change);
+        }
+    }
+
+}

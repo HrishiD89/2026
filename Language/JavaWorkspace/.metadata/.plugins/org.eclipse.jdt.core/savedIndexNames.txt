@@ -1,3 +1,0 @@
-INDEX VERSION 1.134+D:\2026\Learning\JavaWorkspace\.metadata\.plugins\org.eclipse.jdt.core
-494577126.index
-1865797976.index
